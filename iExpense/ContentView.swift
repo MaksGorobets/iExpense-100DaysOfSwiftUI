@@ -7,76 +7,43 @@
 
 import SwiftUI
 
-struct User: Codable, Hashable {
-    var name: String
-    var secondName: String
-}
 
 struct ContentView: View {
     
-    @State private var users = [User]()
-    @State private var showingSheet = false
+let expenses = Expenses()
     
-    @State private var newName = ""
-    @State private var newSecondName = ""
+@State private var isSheetShowing = false
     
     var body: some View {
         NavigationStack {
             List {
-                ForEach(users, id: \.self) {
-                    Text("\($0.name) \($0.secondName)")
+                ForEach(expenses.items) { item in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(item.name)
+                                .font(.title)
+                            Text(item.type)
+                        }
+                        Spacer()
+                        Text("\(item.amount.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))")
+                    }
                 }
-                .onDelete(perform: deleteItem)
+                .onDelete(perform: removeItems)
             }
-                Button("Add a person") {
-                    showingSheet.toggle()
-                }
-            .sheet(isPresented: $showingSheet) {
-                Spacer()
-                VStack {
-                    TextField("Enter a name", text: $newName)
-                    TextField("Enter a second name", text: $newSecondName)
-                }
-                .padding()
-                Spacer()
-                Button("Done") {
-                    showingSheet = false
-                    users.append(User(name: newName, secondName: newSecondName))
-                }
-            }
-            .navigationTitle("iExpense Testing")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("iExpense")
             .toolbar {
-                EditButton()
-                Button("Save all") {
-                    saveData()
+                Button("New expense", systemImage: "plus") {
+                    isSheetShowing.toggle()
                 }
             }
-        }
-        .onAppear {
-            loadData()
-        }
-    }
-    
-    func deleteItem(on offsets: IndexSet) {
-        users.remove(atOffsets: offsets)
-    }
-    
-    func saveData() {
-        let encoder = JSONEncoder()
-        
-        if let data = try? encoder.encode(users) {
-            UserDefaults.standard.set(data, forKey: "data")
+            .sheet(isPresented: $isSheetShowing) {
+                AddExpenseView(expenses: expenses)
+            }
         }
     }
     
-    func loadData() {
-        let decoder = JSONDecoder()
-        
-        if let data = UserDefaults.standard.data(forKey: "data"),
-           let decoded = try? decoder.decode([User].self, from: data) {
-            users = decoded
-        }
+    func removeItems(at offsets: IndexSet) {
+        expenses.items.remove(atOffsets: offsets)
     }
     
 }
