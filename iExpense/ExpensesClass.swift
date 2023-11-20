@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct ExpenseItem: Identifiable, Codable {
     var id = UUID()
@@ -30,5 +31,15 @@ class Expenses {
             }
         }
         items = []
+    }
+}
+
+func expenseStyle(_ amount: Double) -> Color {
+    if amount <= 2000 {
+        .green
+    } else if amount <= 5000{
+        .orange
+    } else {
+        .red
     }
 }

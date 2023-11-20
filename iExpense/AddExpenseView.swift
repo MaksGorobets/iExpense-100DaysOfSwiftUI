@@ -31,6 +31,7 @@ struct AddExpenseView: View {
                 }
                 TextField("Enter amount", value: $amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                     .keyboardType(.decimalPad)
+                    .foregroundStyle(expenseStyle(amount))
             }
             .navigationTitle("Add expense")
             .toolbar {
@@ -44,6 +45,9 @@ struct AddExpenseView: View {
     }
     
     func saveExpense() {
+        guard name != "" else {
+            return
+        }
         let newExpense = ExpenseItem(name: name, type: type, amount: amount)
         expenses.items.append(newExpense)
     }
