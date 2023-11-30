@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddExpenseView: View {
     
-    @State private var name = ""
+    @State private var name = "Name it here!"
     @State private var type = "Personal"
     @State private var amount = 0.0
     
@@ -33,7 +33,8 @@ struct AddExpenseView: View {
                     .keyboardType(.decimalPad)
                     .foregroundStyle(expenseStyle(amount))
             }
-            .navigationTitle("Add expense")
+            .navigationTitle($name)
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem {
                     Button("Save") {
@@ -47,7 +48,6 @@ struct AddExpenseView: View {
                     }
                 }
             }
-            .presentationBackground(.ultraThickMaterial)
         }
     }
     
