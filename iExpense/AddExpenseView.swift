@@ -35,9 +35,16 @@ struct AddExpenseView: View {
             }
             .navigationTitle("Add expense")
             .toolbar {
-                Button("Save") {
-                    saveExpense()
-                    dismiss()
+                ToolbarItem {
+                    Button("Save") {
+                        saveExpense()
+                        dismiss()
+                    }
+                }
+                ToolbarItem(placement: .topBarLeading) {
+                    Button("Cancel", role: .destructive) {
+                        dismiss()
+                    }
                 }
             }
             .presentationBackground(.ultraThickMaterial)

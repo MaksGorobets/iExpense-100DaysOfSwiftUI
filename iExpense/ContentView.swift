@@ -54,14 +54,17 @@ struct ContentView: View {
             }
             .navigationTitle("iExpense")
             .toolbar {
-                Button("New expense", systemImage: "plus") {
-                    isSheetShowing.toggle()
+                NavigationLink {
+                    AddExpenseView(expenses: expenses)
+                        .navigationBarBackButtonHidden()
+                } label:{
+                    Image(systemName: "plus")
                 }
             }
-            .sheet(isPresented: $isSheetShowing) {
-                AddExpenseView(expenses: expenses)
-                    .presentationDetents([.medium, .large])
-            }
+//            .sheet(isPresented: $isSheetShowing) {
+//                AddExpenseView(expenses: expenses)
+//                    .presentationDetents([.medium, .large])
+//            }
         }
     }
     
