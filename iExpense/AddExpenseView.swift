@@ -6,14 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AddExpenseView: View {
-    
+    @Environment(\.modelContext) var modelContext
     @State private var name = "Name it here!"
     @State private var type = "Personal"
     @State private var amount = 0.0
     
-    var expenses: Expenses
+    @Query var expenses: [ExpenseItem]
     
     let types = ["Personal", "Business"]
     
@@ -56,11 +57,11 @@ struct AddExpenseView: View {
             return
         }
         let newExpense = ExpenseItem(name: name, type: type, amount: amount)
-        expenses.items.append(newExpense)
+        modelContext.insert(newExpense)
     }
     
 }
 
 #Preview {
-    AddExpenseView(expenses: Expenses())
+    AddExpenseView()
 }

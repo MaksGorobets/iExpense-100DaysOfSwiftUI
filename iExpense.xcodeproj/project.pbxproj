@@ -14,6 +14,7 @@
 		E9AA470A2B07DD45006E24C1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AA47092B07DD45006E24C1 /* ContentView.swift */; };
 		E9AA470C2B07DD46006E24C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9AA470B2B07DD46006E24C1 /* Assets.xcassets */; };
 		E9AA470F2B07DD46006E24C1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9AA470E2B07DD46006E24C1 /* Preview Assets.xcassets */; };
+		E9BB2B462B32081E0058A16B /* ExpenseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BB2B452B32081E0058A16B /* ExpenseListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		E9AA47092B07DD45006E24C1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E9AA470B2B07DD46006E24C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9AA470E2B07DD46006E24C1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E9BB2B452B32081E0058A16B /* ExpenseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				E94C32B22B0A81F600054835 /* TestingView.swift */,
 				E94C32B42B0A90BF00054835 /* ExpensesClass.swift */,
 				E94C32B62B0A90F200054835 /* AddExpenseView.swift */,
+				E9BB2B452B32081E0058A16B /* ExpenseListView.swift */,
 				E9AA47072B07DD45006E24C1 /* iExpenseApp.swift */,
 				E9AA47092B07DD45006E24C1 /* ContentView.swift */,
 				E9AA470B2B07DD46006E24C1 /* Assets.xcassets */,
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9AA470A2B07DD45006E24C1 /* ContentView.swift in Sources */,
+				E9BB2B462B32081E0058A16B /* ExpenseListView.swift in Sources */,
 				E9AA47082B07DD45006E24C1 /* iExpenseApp.swift in Sources */,
 				E94C32B72B0A90F200054835 /* AddExpenseView.swift in Sources */,
 				E94C32B32B0A81F600054835 /* TestingView.swift in Sources */,
