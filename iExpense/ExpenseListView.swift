@@ -18,6 +18,7 @@ struct ExpenseListView: View {
         if containsType(type: "Personal") && showingTypes[0] {
             Section("Personal") {
                 ForEach(expenses) { item in
+                    let formattedPrice = "\(item.amount.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))"
                     if item.type == "Personal" {
                         HStack {
                             VStack(alignment: .leading) {
@@ -26,9 +27,12 @@ struct ExpenseListView: View {
                                 Text(item.type)
                             }
                             Spacer()
-                            Text("\(item.amount.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))")
+                            Text(formattedPrice)
                                 .foregroundStyle(expenseStyle(item.amount))
                         }
+                        .accessibilityElement()
+                        .accessibilityLabel("\(item.name), \(formattedPrice)")
+                        .accessibilityValue("Personal")
                     }
                 }
                 .onDelete(perform: removeItems)
@@ -37,6 +41,7 @@ struct ExpenseListView: View {
         if containsType(type: "Business") && showingTypes[1] {
             Section("Business") {
                 ForEach(expenses) { item in
+                    let formattedPrice = "\(item.amount.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))"
                     if item.type == "Business" {
                         HStack {
                             VStack(alignment: .leading) {
@@ -45,9 +50,12 @@ struct ExpenseListView: View {
                                 Text(item.type)
                             }
                             Spacer()
-                            Text("\(item.amount.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))")
+                            Text(formattedPrice)
                                 .foregroundStyle(expenseStyle(item.amount))
                         }
+                        .accessibilityElement()
+                        .accessibilityLabel("\(item.name), \(formattedPrice)")
+                        .accessibilityValue("Business")
                     }
                 }
                 .onDelete(perform: removeItems)

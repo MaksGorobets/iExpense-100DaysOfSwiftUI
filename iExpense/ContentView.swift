@@ -65,12 +65,12 @@ struct SortBy: View {
                 .foregroundStyle(.gray.opacity(0.2))
                 .frame(height: 35)
             Picker("Sort by", selection: $sortBy) {
-                Text("By name")
+                Text("Name")
                     .tag([
                         SortDescriptor(\ExpenseItem.name),
                         SortDescriptor(\ExpenseItem.amount, order: .reverse)
                     ])
-                Text("By price")
+                Text("Price")
                     .tag([
                         SortDescriptor(\ExpenseItem.amount, order: .reverse),
                         SortDescriptor(\ExpenseItem.name)
